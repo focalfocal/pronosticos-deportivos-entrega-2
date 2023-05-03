@@ -1,4 +1,4 @@
-package com.mycompany.pronosticosdeportivos1;
+package com.mycompany.pronosticosdeportivos2;
 
 import java.io.File;  // operaciones con archivos. Version mas moderna java.nio
 //java.io.readLine() visto en teoría con Carlos está deprecado en Java 11

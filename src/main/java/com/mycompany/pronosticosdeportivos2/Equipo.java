@@ -1,4 +1,4 @@
-package com.mycompany.pronosticosdeportivos1;
+package com.mycompany.pronosticosdeportivos2;
 
 /**
  *

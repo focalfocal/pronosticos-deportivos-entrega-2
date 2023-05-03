@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
-        <exec.mainClass>com.mycompany.pronosticosdeportivos1.PronosticosDeportivos1</exec.mainClass>
+        <exec.mainClass>com.mycompany.pronosticosdeportivos2.PronosticosDeportivos2</exec.mainClass>
     </properties>
     <name>pronosticosDeportivos2</name>
 </project>

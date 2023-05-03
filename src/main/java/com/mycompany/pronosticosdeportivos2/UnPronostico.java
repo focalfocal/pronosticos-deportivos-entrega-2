@@ -1,6 +1,6 @@
-package com.mycompany.pronosticosdeportivos1;
+package com.mycompany.pronosticosdeportivos2;
 
-import com.mycompany.pronosticosdeportivos1.PronosticosDeportivos2.ResultadoEnum;
+import com.mycompany.pronosticosdeportivos2.PronosticosDeportivos2.ResultadoEnum;
 
 /**
  *
