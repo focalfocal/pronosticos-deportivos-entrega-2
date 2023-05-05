@@ -15,6 +15,7 @@ public class Participantes {
     private ArrayList<UnParticipante> participantes;
     
     public Participantes (String ruta) {
+        participantes = new ArrayList(); //inicializa para poder recorrer con for, aun vacio.
             //lee contenido del archivo de pronosticos. En Etapa 1 estaba en clase Pronosticos
         this.leerPronosticos(ruta);
     }
@@ -66,6 +67,7 @@ public class Participantes {
         //si no existe, lo crea, lo agrega a participantes y lo retorna
         UnParticipante nuevoParticipante = new UnParticipante( idParticipante, nombreParticipante );
         this.participantes.add( nuevoParticipante );
+        System.out.println("nuevo participante: " + nombreParticipante);
         return nuevoParticipante;
     }
     

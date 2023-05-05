@@ -15,6 +15,13 @@ public class Equipo {
         this.descripcion = descripcion;
     }
 
+    @Override
+    public String toString() {
+        return "Equipo{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+    }
+
+    
+    
     /**
      * @return the id
      */

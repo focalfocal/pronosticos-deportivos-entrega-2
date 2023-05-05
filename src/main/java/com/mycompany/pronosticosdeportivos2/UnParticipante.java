@@ -15,7 +15,7 @@ public class UnParticipante {
     public UnParticipante(String id, String nombre) {
         this.id = id;
         this.nombre = nombre;
-        this.pronosticos = null;  //inicializacion con valor conocido
+        this.pronosticos = new ArrayList();  //inicializacion para poder agregar aun vacio
     }
 
     public void agregarPronostico (UnPronostico pronostico){

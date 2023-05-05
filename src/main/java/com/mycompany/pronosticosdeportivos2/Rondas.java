@@ -18,9 +18,10 @@ public class Rondas {
     
     Rondas ( String ruta ){
         //this.idEquiposCreados = null; //contiene solo el id de cada instancia de objeto creada, para facilitar chequear si un equipo ya existe
-        this.equipos = null;
-        //this.partidos = new ArrayList();
-        this.partidos = null;
+        this.equipos = new ArrayList();
+        //this.equipos = null;
+        this.partidos = new ArrayList();
+        //this.partidos = null;
         //lee contenido del archivo poblando this.partidos
         this.leerRondas( ruta );
     }
@@ -49,7 +50,7 @@ public class Rondas {
             
             //PartidoJugado partidoJugado = new PartidoJugado(i[0], i[1], equipo1, equipo2,Integer.parseInt(i[5]),Integer.parseInt(i[6]));
             //En etapa 1 un partido contenía los equipos. Ahora solo tiene el id del equipo.
-            PartidoJugado partidoJugado = new PartidoJugado(i[0], i[1], i[4], i[9],Integer.parseInt(i[5]),Integer.parseInt(i[6]));
+            PartidoJugado partidoJugado = new PartidoJugado(i[2], i[3], i[4], i[9],Integer.parseInt(i[7]),Integer.parseInt(i[8]));
             
             this.partidos.add(partidoJugado);
         }
@@ -59,9 +60,10 @@ public class Rondas {
         //Si el equipo con este id no existe, lo crea
     public void crearEquipoSiNoExiste ( String idEquipo, String nombre, String descripcion ){
 
-        Optional<Equipo> equipoExistenteOno = this.equipos.stream()
-                .filter(p -> p.getId().equals(idEquipo))
-                .findFirst();
+        System.out.println("idEquipo: " + idEquipo);
+        Optional<Equipo> equipoExistenteOno = this.equipos.stream().filter(p -> p.getId().equals(idEquipo)).findFirst();
+//                .filter(p -> p.getId().equals(idEquipo))
+//                .findFirst();
 
         //crea equipo y lo agrega a lista de equipos
         if ( !equipoExistenteOno.isPresent() ){
