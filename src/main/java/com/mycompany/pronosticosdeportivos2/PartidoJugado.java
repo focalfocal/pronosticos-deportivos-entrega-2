@@ -7,9 +7,12 @@ import com.mycompany.pronosticosdeportivos2.PronosticosDeportivos2.ResultadoEnum
  * @author jul
  */
 public class PartidoJugado {
+
     private String idCombinadaEquipos; //Para identificar los partidos de forma unívoca para su correcto procesamiento, y matchearlos con los pronósticos
-    private Equipo equipo1;
-    private Equipo equipo2;
+    private String idRonda; // agregado campo para Entrega 2
+    private String numRonda; // agregado campo para Entrega 2
+    private String idEquipo1;
+    private String idEquipo2;
     private int golesEquipo1;
     private int golesEquipo2;
     private ResultadoEnum resultadoEquipo1;
@@ -17,10 +20,12 @@ public class PartidoJugado {
 
     PartidoJugado(){} //usado para cumplir facilmente una necesidad de sintaxis obligatoria en otra parte del código. Sin otro uso.
     
-    PartidoJugado(Equipo equipo1, Equipo equipo2, int golesEquipo1, int golesEquipo2){
-        this.idCombinadaEquipos = equipo1.getId() + "+" + equipo2.getId();
-        this.equipo1 = equipo1;
-        this.equipo2 = equipo2;
+    PartidoJugado(String idRonda, String numRonda, String idEquipo1, String idEquipo2, int golesEquipo1, int golesEquipo2){
+        this.idCombinadaEquipos = idRonda + "+" + idEquipo1 + "+" + idEquipo2;
+        this.idRonda = idRonda;
+        this.numRonda = numRonda;
+        this.idEquipo1 = idEquipo1;
+        this.idEquipo2 = idEquipo2;
         this.golesEquipo1 = golesEquipo1;
         this.golesEquipo2 = golesEquipo2;
         
@@ -37,19 +42,34 @@ public class PartidoJugado {
 
         }
     
-    public ResultadoEnum resultado(Equipo equipo){
-        if( equipo.getNombre() == this.equipo1.getNombre() ){
+//    public ResultadoEnum resultado(Equipo equipo){
+//        if( equipo.getNombre() == this.equipo1.getNombre() ){
+//            return resultadoEquipo1;
+//        } else {
+//            return resultadoEquipo2;
+//        }
+//    }
+    
+    //Dado el id de un equipo en este partido, retorna el resultado correspondiente del partido
+    public ResultadoEnum resultado(String idEquipo){
+        if( idEquipo.equals(this.idEquipo1 ) ){
             return resultadoEquipo1;
         } else {
             return resultadoEquipo2;
         }
     }
 
-    //Determina la cantidad de puntos que corresponden comparando un partido jugado con un pronostico.
+    //Determina la cantidad de puntos que corresponden comparando un partido jugado con un pronostico.  ###PENDIENTE ACTUALIZAR
     public int evalPronUnPartido (UnPronostico unPronostico){
 
         return (this.getResultadoEquipo1() == unPronostico.getPronosticoEquipo1()) ? 1 : 0;
     }
+
+    @Override
+    public String toString() {
+        return "PartidoJugado{" + "idCombinadaEquipos=" + idCombinadaEquipos + ", idRonda=" + idRonda + ", numRonda=" + numRonda + ", id equipo1=" + idEquipo1 + ", id equipo2=" + idEquipo2 + ", golesEquipo1=" + golesEquipo1 + ", golesEquipo2=" + golesEquipo2 + ", resultadoEquipo1=" + resultadoEquipo1 + ", resultadoEquipo2=" + resultadoEquipo2 + '}';
+    }
+    
     
     /**
      * @return the idCombinadaEquipos
@@ -65,39 +85,39 @@ public class PartidoJugado {
         this.idCombinadaEquipos = idCombinadaEquipos;
     }
 
-    /**
-     * @return the equipo1
-     */
-    public Equipo getEquipo1() {
-        return equipo1;
-    }
-
-    /**
-     * @param equipo1 the equipo1 to set
-     */
-    public void setEquipo1(Equipo equipo1) {
-        this.equipo1 = equipo1;
-    }
-
-    /**
-     * @return the equipo2
-     */
-    public Equipo getEquipo2() {
-        return equipo2;
-    }
-
-    /**
-     * @param equipo2 the equipo2 to set
-     */
-    public void setEquipo2(Equipo equipo2) {
-        this.equipo2 = equipo2;
-    }
-
-    /**
+     /**
      * @return the golesEquipo1
      */
     public int getGolesEquipo1() {
         return golesEquipo1;
+    }
+
+    /**
+     * @return the idEquipo1
+     */
+    public String getIdEquipo1() {
+        return idEquipo1;
+    }
+
+    /**
+     * @param idEquipo1 the idEquipo1 to set
+     */
+    public void setIdEquipo1(String idEquipo1) {
+        this.idEquipo1 = idEquipo1;
+    }
+
+    /**
+     * @return the idEquipo2
+     */
+    public String getIdEquipo2() {
+        return idEquipo2;
+    }
+
+    /**
+     * @param idEquipo2 the idEquipo2 to set
+     */
+    public void setIdEquipo2(String idEquipo2) {
+        this.idEquipo2 = idEquipo2;
     }
 
     /**
@@ -149,5 +169,33 @@ public class PartidoJugado {
         this.resultadoEquipo2 = resultadoEquipo2;
     }
 
+    /**
+     * @return the idRonda
+     */
+    public String getIdRonda() {
+        return idRonda;
+    }
+
+    /**
+     * @param idRonda the idRonda to set
+     */
+    public void setIdRonda(String idRonda) {
+        this.idRonda = idRonda;
+    }
+
+    /**
+     * @return the numRonda
+     */
+    public String getNumRonda() {
+        return numRonda;
+    }
+
+    /**
+     * @param numRonda the numRonda to set
+     */
+    public void setNumRonda(String numRonda) {
+        this.numRonda = numRonda;
+    }
+    
     
 }

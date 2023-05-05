@@ -8,13 +8,15 @@ import com.mycompany.pronosticosdeportivos2.PronosticosDeportivos2.ResultadoEnum
  */
 public class UnPronostico {
     
-    private String idCombinadaEquipos; //Para identificar los partidos de forma unívoca para su correcto procesamiento
+    private String idCombinadaRondaEquipos; //Para identificar los partidos de forma unívoca para su correcto procesamiento
+    private String idRonda;
     private String idEquipo1;
     private String idEquipo2;
     private PronosticosDeportivos2.ResultadoEnum pronosticoEquipo1; //Los resultados del equipo 2 se deducen inmediatamente en base al pronostico para equipo1
     
-    UnPronostico (String idEquipo1, String idEquipo2, String gana, String empata, String pierde){
-        this.idCombinadaEquipos = idEquipo1 + "+" + idEquipo2;
+    UnPronostico (String idRonda, String idEquipo1, String idEquipo2, String gana, String empata, String pierde){
+        this.idCombinadaRondaEquipos = idRonda + "+" + idEquipo1 + "+" + idEquipo2;
+        this.idRonda = idRonda;
         this.idEquipo1 = idEquipo1;
         this.idEquipo2 = idEquipo2;
         if (gana.equals("X")){
@@ -24,23 +26,23 @@ public class UnPronostico {
         } else {
             this.pronosticoEquipo1 = ResultadoEnum.PERDIDO;
         }
-        /*System.out.println(this.idCombinadaEquipos);
+        /*System.out.println(this.idCombinadaRondaEquipos);
         System.out.println(gana +" | " + empata + " | " + pierde);
         System.out.println(this.pronosticoEquipo1);*/
     }
 
     /**
-     * @return the idCombinadaEquipos
+     * @return the idCombinadaRondaEquipos
      */
-    public String getIdCombinadaEquipos() {
-        return idCombinadaEquipos;
+    public String getIdCombinadaRondaEquipos() {
+        return idCombinadaRondaEquipos;
     }
 
     /**
-     * @param idCombinadaEquipos the idCombinadaEquipos to set
+     * @param idCombinadaRondaEquipos the idCombinadaRondaEquipos to set
      */
-    public void setIdCombinadaEquipos(String idCombinadaEquipos) {
-        this.idCombinadaEquipos = idCombinadaEquipos;
+    public void setIdCombinadaRondaEquipos(String idCombinadaRondaEquipos) {
+        this.idCombinadaRondaEquipos = idCombinadaRondaEquipos;
     }
 
     /**
