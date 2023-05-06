@@ -21,11 +21,15 @@ public class Rondas {
     Rondas ( String ruta ){
         //this.idEquiposCreados = null; //contiene solo el id de cada instancia de objeto creada, para facilitar chequear si un equipo ya existe
         this.equipos = new ArrayList();
-        //this.equipos = null;
         this.partidos = new ArrayList();
-        //this.partidos = null;
         //lee contenido del archivo poblando this.partidos
         this.leerRondas( ruta );
+    }
+    
+    //Constructor para faciltar los tests con jUnit
+    Rondas () {
+        this.equipos = new ArrayList();
+        this.partidos = new ArrayList();
     }
             
     //Lee todos los datos de partidos jugados y crea los objetos correspondientes

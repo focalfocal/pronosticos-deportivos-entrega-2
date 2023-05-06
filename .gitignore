@@ -21,6 +21,10 @@ dependency-reduced-pom.xml
 *.iws
 .idea/
 *.class
+*target*
+*.jar
+*.war
+*.ear
 
 # Miscellaneous
 .DS_Store
@@ -33,3 +37,4 @@ Thumbs.db
 ## Visual Studio Code
 ##############################
 .vscode/
+/nbproject/

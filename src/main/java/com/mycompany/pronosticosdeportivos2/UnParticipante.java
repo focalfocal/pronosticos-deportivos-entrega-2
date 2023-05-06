@@ -29,19 +29,14 @@ public class UnParticipante {
     
     //Calcula puntajes de todos los pronosticos de un participante
     public void evaluarPronosticos( Rondas rondas ){
-//        int puntaje = 0;
-//        int acertados = 0;
         
         //unPronostico es el de un solo partido
-        //for (UnPronostico unPronostico : pronosticos.getPronosticos()){
         for (UnPronostico unPronostico : this.pronosticos){
             
             //determina cual es el partido jugado correspondiente a este pronostico de un partido
             PartidoJugado partidoJugadoCorresp = this.determinarPartJugadoCorrespondiente(unPronostico, rondas); 
             
-            //determina puntaje correspondiente a este pronostico
-            //System.out.println("puntos un partido: " + partidoJugadoCorresp.evalPronUnPartido(unPronostico)); 
-            
+            //determina puntaje correspondiente a este pronostico        
             int[] puntosEtc = partidoJugadoCorresp.evalPronUnPartido(unPronostico);
             
             //this.puntaje += partidoJugadoCorresp.evalPronUnPartido(unPronostico);
@@ -164,6 +159,5 @@ public class UnParticipante {
     public void setAcertados(int acertados) {
         this.acertados = acertados;
     }
-    
     
 }

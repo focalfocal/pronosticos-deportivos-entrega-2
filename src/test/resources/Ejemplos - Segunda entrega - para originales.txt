@@ -1,0 +1,133 @@
+Ejemplo segunda entrega
+
+* Importa la ronda
+* Los pronósticos que vienen en el archivo son de muchas personas
+	- Participantes:
+		- Participante1:
+			- id: 1
+			- Nombre: "Mariana"
+		- Participante2:
+			- id: 2
+			- Nombre: "Pedro"
+	- Equipos:
+		- Equipo1:
+			- id: 1
+			- Nombre: "Argentina"
+			- Descripción: "Seleccionado"
+		- Equipo2:
+			- id: 2
+			- Nombre: "Arabia Saudita"
+			- Descripción: "Seleccionado"
+		- Equipo3:
+			- id: 3
+			- Nombre: "Polonia"
+			- Descripción: "Seleccionado"
+		- Equipo4:
+			- id: 4
+			- Nombre: "México"
+			- Descripción: "Seleccionado"
+
+	- Partidos:
+		- Partido1:
+			- id: 1
+			- Equipo 1: Argentina (id:1)
+			- Equipo 2: Arabia Saudita (id:2)
+			- Goles equipo 1: 1
+			- Goles equipo 2: 2
+
+		- Partido2:
+			- id: 2
+			- Equipo 1: Polonia (id:3)
+			- Equipo 2: México (id:4)
+			- Goles equipo 1: 0
+			- Goles equipo 2: 0 
+
+		- Partido3:
+			- id: 3
+			- Equipo 1: Argentina (id:1)
+			- Equipo 2: México (id:4)
+			- Goles equipo 1: 2
+			- Goles equipo 2: 0 
+		
+		- Partido4:
+			- id: 4
+			- Equipo 1: Arabia Saudita (id:2)
+			- Equipo 2: Polonia (id:3)
+			- Goles equipo 1: 0
+			- Goles equipo 2: 0
+	
+	- Rondas:
+		- Ronda1:
+			- id: 1
+			- Número: 1
+			- Partidos: [Partido1 (id:1), Partido2 (id:2), Partido3 (id:3), Partido4 (id:4)]
+
+	
+	- Pronósticos:
+		- Pronóstico1 (de "Mariana")
+			- id: 1
+			- Participante: Participante1 (id:1 - "Mariana")
+			- Partido: Partido1 (id:1) (Argentina - Arabia Saudita)
+			- Equipo: equipo1 (id:1) (Argentina)
+			- Resultado: GANADOR
+
+		- Pronóstico2 (de "Mariana")
+			- id: 2
+			- Participante: Participante1 (id:1 - "Mariana")
+			- Partido: Partido1 (id:1) (Argentina - Arabia Saudita)
+			- Equipo: equipo2 (id:2) (Arabia Saudita)
+			- Resultado: PERDEDOR
+
+		- Pronóstico3 (de "Mariana")
+			- id: 3
+			- Participante: Participante1 (id:1 - "Mariana")
+			- Partido: Partido2 (id:2) (Polonia - México)
+			- Equipo: equipo3 (id:3) (Polonia)
+			- Resultado: EMPATE
+
+		- Pronóstico4 (de "Mariana")
+			- id: 4
+			- Participante: Participante1 (id:1 - "Mariana")
+			- Partido: Partido2 (id:2) (Polonia - México)
+			- Equipo: equipo4 (id:4) (México)
+			- Resultado: EMPATE
+
+		- Pronóstico5 (de "Pedro")
+			- id: 5
+			- Participante: Participante2 (id:2 - "Pedro")
+			- Partido: Partido1 (id:1) (Argentina - Arabia Saudita)
+			- Equipo: equipo1 (id:1) (Argentina)
+			- Resultado: GANADOR
+
+		- Pronóstico6 (de "Pedro")
+			- id: 6
+			- Participante: Participante2 (id:2 - "Pedro")
+			- Partido: Partido1 (id:1) (Argentina - Arabia Saudita)
+			- Equipo: equipo2 (id:2) (Arabia Saudita)
+			- Resultado: PERDEDOR
+
+		- Pronóstico7 (de "Pedro")
+			- id: 7
+			- Participante: Participante2 (id:2 - "Pedro")
+			- Partido: Partido2 (id:2) (Polonia - México)
+			- Equipo: equipo3 (id:3) (Polonia)
+			- Resultado: PERDEDOR
+
+		- Pronóstico8 (de "Pedro")
+			- id: 8
+			- Participante: Participante2 (id:2 - "Pedro")
+			- Partido: Partido2 (id:2) (Polonia - México)
+			- Equipo: equipo4 (id:4)(México)
+			- Resultado: GANADOR
+
+		
+
+	- RESULTADO ESPERADO (teniendo en cuenta el ejemplo completo dado en el enunciado):
+		- Mariana: 3 puntos
+			- Ya que cada acierto vale 1 punto y acertó en:
+				- Pronóstico3 | Pronóstico4 (0.5 cada acierto por ser EMPATE => 1 punto total)
+				- Argentina - México (1 punto porque Argentina fue GANADOR)
+				- Arabia Saudita - Polonia (1 punto porque Polonia fue GANADOR)
+		- Pedro: 1 punto
+			- Ya que cada acierto vale 1 punto y acertó en:
+				- Argentina - México (1 punto porque Argentina fue GANADOR)
