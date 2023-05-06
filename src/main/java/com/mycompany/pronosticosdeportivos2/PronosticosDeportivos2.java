@@ -3,7 +3,7 @@ package com.mycompany.pronosticosdeportivos2;
 import java.util.ArrayList;
 
 /**
- * Pronosticos Deportivos - Entrega 1
+ * Pronosticos Deportivos - Entrega 2
  * @author dd
  * Java 11 (LTS)
  * Suposiciones / bases:
@@ -29,7 +29,12 @@ public class PronosticosDeportivos2 {
         //Pronosticos pronosticos = new Pronosticos("Mariana", args[1]);
         
         //Crea objeto Participantes con todos los pronosticos, leidos de archivo
-        Participantes participantes = new Participantes(args[1]);
+        //Participantes participantes = new Participantes(args[1]);
+        Participantes participantes = new Participantes(args[1], ronda);
+        
+        participantes.evaluarPronosticosParticipantes();
+        
+        participantes.imprimirParticipantesYpuntajes();
          
 //###PENDIENTE ACTUALIZAR        
 //        //Determina el puntaje correspondiente a esta ronda y estos pronosticos de una ronda

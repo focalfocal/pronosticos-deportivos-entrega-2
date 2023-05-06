@@ -9,6 +9,8 @@ import java.util.Optional; //contenedor de objetos que pueden existir o no, para
  */
 public class Rondas {
     
+    private static final int NRO_CAMPOS = 12; //cantidad de campos en archivo de resultados
+    
     //El atributo partidos incluye los partidos jugados de todas las rondas (cada partido incluye el id  y numero de ronda). Ver suposición registrada en PronostiosDeportivos2.java
     private ArrayList<PartidoJugado> partidos;
     //El atributo idEquiposCreados es un auxiliar para facilitar las búsquedas por id para ver si un equipo con ese id ya existe.
@@ -37,22 +39,45 @@ public class Rondas {
         
         Equipo equipo1;
         Equipo equipo2;
+        int golesEquipo1;
+        int golesEquipo2;
+        int contador = 2; //contador de renglones. Fila 1: titulos
         
         for (String[] i : renglonesParseados){
-            //Nota para etapa 2: los equipos se crean solo en ronda 1. En rondas siguientes, se obtienen y buscan los existentes para crear el partido.
-            //equipo1 = new Equipo(i[4], i[5], i[6]);
-            //equipo2 = new Equipo(i[9], i[10], i[11]);
+        
+            //chequeo de que cada linea tenga la cantidad correcta de campos
+            if ( i.length != NRO_CAMPOS) {
+                System.err.println( "La fila numero " + contador + " del archivo de resultados tiene " + i.length +" campos. Deberia tener " + NRO_CAMPOS + " campos");
+                System.err.println( "Revisar el origen del problema");
+                
+                System.exit(2);
+            }
             
-            //crea equipo si no existe, y lo agrega al atributo equipos
-            crearEquipoSiNoExiste(i[4], i[5], i[6]); //equipo1
-            crearEquipoSiNoExiste(i[9], i[10], i[11]); //equipo2
+            try{
+                
+                golesEquipo1 = Integer.parseInt(i[7]);
+                golesEquipo2 = Integer.parseInt(i[8]);
+                
+                //crea equipo si no existe, y lo agrega al atributo equipos
+                crearEquipoSiNoExiste(i[4], i[5], i[6]); //equipo1
+                crearEquipoSiNoExiste(i[9], i[10], i[11]); //equipo2
+
+                //En etapa 1 un partido contenía los equipos. Ahora solo tiene el id del equipo.
+                PartidoJugado partidoJugado = new PartidoJugado(i[2], i[3], i[4], i[9], golesEquipo1, golesEquipo2);
+
+                this.partidos.add(partidoJugado);
+                
+            } catch (NumberFormatException e) {
+                
+                System.err.println( "La fila numero " + contador + " del archivo de resultados tiene alguna de sus cantidades de goles con formato que no es un entero, u otra anormalidad:");
+                System.err.println( "Goles Equipo1: " + i[7]);
+                System.err.println( "Goles Equipo2: " + i[8]);
+                
+                System.exit(2);
+            }
             
+            contador++;
             
-            //PartidoJugado partidoJugado = new PartidoJugado(i[0], i[1], equipo1, equipo2,Integer.parseInt(i[5]),Integer.parseInt(i[6]));
-            //En etapa 1 un partido contenía los equipos. Ahora solo tiene el id del equipo.
-            PartidoJugado partidoJugado = new PartidoJugado(i[2], i[3], i[4], i[9],Integer.parseInt(i[7]),Integer.parseInt(i[8]));
-            
-            this.partidos.add(partidoJugado);
         }
         
     }
@@ -72,46 +97,6 @@ public class Rondas {
         }
     }
 
-//    //Encuentra y devuelve un equipo si existe, o lo crea y lo devuelve si no existe
-//    public Equipo obtenerOcrearEquipo ( String idEquipo, String nombre, String descripcion ){
-//
-////        //chequea si existe un equipo con esa id
-////        for ( String i : this.idEquiposCreados){
-////            if ( i.equals( idEquipo )){
-////                return i; ####NO / CREAR LISTA DE EQUIPOS EN LUGAR DE LISTA DE ID DE EQUIPOS
-////            }           
-////        }
-////        
-////        //si no existe, lo crea, lo agrega a participantes y lo retorna
-////        UnParticipante nuevoParticipante = new UnParticipante( idParticipante, nombreParticipante );
-////        this.participantes.add( nuevoParticipante );
-////        return nuevoParticipante;
-//        
-//        // encuentra el equipo con esta id, si existe. Si no lo encuentra, no hay null pointer exceptions. //Java 8
-//        Optional<Equipo> equipoExistenteOno = this.equipos.stream()
-//                .filter(p -> p.getId().equals(idEquipo))
-//                .findFirst();
-//
-//        if ( equipoExistenteOno.isPresent() ){
-//            return equipoExistenteOno.get(); //Optional<> es un contenedor
-//        } else {
-//            Equipo equipo = new Equipo( idEquipo, nombre, descripcion );
-//            this.equipos.add(equipo);
-//            return equipo;
-//        }
-
-
-        
-        
-    
-//    public boolean existeEquipo(String idBuscada){
-//        // encuentra el equipo con esta id, si existe. Si no lo encuentra, no hay null pointer exceptions.
-//        Optional<Equipo> equipo = this.equipos.stream()
-//                .filter(p -> p.getId().equals(idBuscada))
-//                .findFirst();
-//
-//        return equipo.isPresent();
-//    }
 
     //Dado un pronostico, determina cual es el partido jugado en esta ronda cuyos equipos coinciden
     public PartidoJugado determinarPartJugadoCorrespondiente (UnPronostico unPronostico){
@@ -126,7 +111,7 @@ public class Rondas {
         }
         
         System.err.println ("No encontrado partido jugado correspondiente a un pronostico. Error de datos o de programa de procesamiento");
-        System.exit(1);
+        System.exit(3);
         return new PartidoJugado(); //formalidad para cumplir sintaxis de metodo.
     } 
     

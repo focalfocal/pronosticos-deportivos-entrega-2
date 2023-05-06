@@ -59,10 +59,17 @@ public class PartidoJugado {
         }
     }
 
-    //Determina la cantidad de puntos que corresponden comparando un partido jugado con un pronostico.  ###PENDIENTE ACTUALIZAR
-    public int evalPronUnPartido (UnPronostico unPronostico){
+    //Determina la cantidad de puntos y aciertos que corresponden comparando un partido jugado con un pronostico.
+    public int[] evalPronUnPartido (UnPronostico unPronostico){
 
-        return (this.getResultadoEquipo1() == unPronostico.getPronosticoEquipo1()) ? 1 : 0;
+        //return (this.getResultadoEquipo1() == unPronostico.getPronosticoEquipo1()) ? 1 : 0;
+        int[] puntosEtc = new int[2];
+        
+        //puntaje
+        puntosEtc[0] = (this.getResultadoEquipo1() == unPronostico.getPronosticoEquipo1()) ? 1 : 0;
+        //cantidad de aciertos
+        puntosEtc[1] = (this.getResultadoEquipo1() == unPronostico.getPronosticoEquipo1()) ? 1 : 0;
+        return puntosEtc;
     }
 
     @Override
