@@ -42,13 +42,6 @@ public class PartidoJugado {
 
         }
     
-//    public ResultadoEnum resultado(Equipo equipo){
-//        if( equipo.getNombre() == this.equipo1.getNombre() ){
-//            return resultadoEquipo1;
-//        } else {
-//            return resultadoEquipo2;
-//        }
-//    }
     
     //Dado el id de un equipo en este partido, retorna el resultado correspondiente del partido
     public ResultadoEnum resultado(String idEquipo){

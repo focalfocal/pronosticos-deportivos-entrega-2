@@ -2,7 +2,6 @@ package com.mycompany.pronosticosdeportivos2;
 
 import java.util.ArrayList;
 import java.util.Collections; // para sort de ArrayList
-import java.util.Comparator; // para sort de ArrayList
 
 /**
  *
@@ -70,14 +69,14 @@ public class Participantes {
         //si no existe, lo crea, lo agrega a participantes y lo retorna
         UnParticipante nuevoParticipante = new UnParticipante( idParticipante, nombreParticipante );
         this.participantes.add( nuevoParticipante );
-        //System.out.println("nuevo participante: " + nombreParticipante);
+
         return nuevoParticipante;
     }
     
     public void evaluarPronosticosParticipantes (){
         
         for (UnParticipante unParticipante : this.participantes){
-            //evaluarPronosticosUnParticipante ( unParticipante );
+
             unParticipante.evaluarPronosticos(this.ronda);
         }
     }
@@ -85,85 +84,25 @@ public class Participantes {
     public void imprimirParticipantesYpuntajes (){
         
         //acumula los datos para ordenarlos antes de imprimirlos
-        //String[][] participantesYpuntajes = new String();
         
         //borra lo que hubiera anteriormente, e inicializa para poder agregar elementos
         this.participantesYpuntajes = new ArrayList<>();
         
         for (UnParticipante unParticipante : this.participantes){
-            //evaluarPronosticosUnParticipante ( unParticipante );
+
             unParticipante.agregarPuntaje (participantesYpuntajes);
         }
         
         //ordena
-        //Collections.sort(participantesYpuntajes, puntajeComparator);
         Collections.sort(participantesYpuntajes, new PuntajeComparator());
         
         //imprime
         for (UnParticipante unParticipante : this.participantes){
-            //evaluarPronosticosUnParticipante ( unParticipante );
+
             unParticipante.imprimirDatos (participantesYpuntajes);
         }
     } 
     
-//    Comparator<ArrayList<Object>> puntajeComparator = new Comparator<ArrayList<Object>>() {
-//        @Override //To sort an ArrayList using Comparator we need to override the compare() method provided by comparator interface
-//        public int compare(ArrayList<Object> datosParticipante1, ArrayList<Object> datosParticipante2) {
-//
-//            int puntaje1 = (int) datosParticipante1.get(1); //uso (int) porque el puntaje est
-//            int puntaje2 = (int) datosParticipante2.get(1);
-//
-//            return Integer.compare(puntaje1, puntaje2);
-//        }
-//    };
-    
-    //public int evaluarPronosticos (Pronosticos pronosticos){
-//    public int evaluarPronosticosUnParticipante (UnParticipante unParticipante){
-//        
-//        int puntaje = 0;
-//        int acertados = 0;
-//        
-//        //unPronostico es el de un solo partido
-//        //for (UnPronostico unPronostico : pronosticos.getPronosticos()){
-//        for (UnPronostico unPronostico : unParticipante.){
-//            
-//            //determina cual es el partido jugado correspondiente a este pronostico de un partido
-//            PartidoJugado partidoJugadoCorresp = this.determinarPartJugadoCorrespondiente(unPronostico); 
-//            
-//            //determina puntaje correspondiente a este pronostico
-//            //System.out.println("puntos un partido: " + partidoJugadoCorresp.evalPronUnPartido(unPronostico)); 
-//            
-//            puntaje += partidoJugadoCorresp.evalPronUnPartido(unPronostico);
-//        }
-//        return puntaje;
-//    }
-
-    
-    //Dado un pronostico, determina cual es el partido jugado (con correspondencia de ronda y equipos)
-//    public PartidoJugado determinarPartJugadoCorrespondiente (UnPronostico unPronostico){
-//        
-//        // ids de ronda + ids de equipos
-//        String idCombinadaEquiposPronost = unPronostico.getIdCombinadaRondaEquipos();
-//        
-//        for (PartidoJugado partido : this.ronda.getPartidos() ){
-// 
-//            if ( partido.getIdCombinadaEquipos().equals( idCombinadaEquiposPronost)) {
-//                return partido;
-//            }
-//        }
-//        
-//        System.err.println ("No encontrado partido jugado correspondiente a un pronostico. Error de datos o de programa de procesamiento");
-//        System.exit(4);
-//        return new PartidoJugado(); //formalidad para cumplir sintaxis de metodo.
-//    } 
-
-//public PronosticosDeportivos2.ResultadoEnum resultado ( Equipo equipo ){
-//        if( equipo.getNombre() == this.equipo1.getNombre() ){
-//            return resultadoEquipo1;
-//        } else {
-//            return resultadoEquipo2;
-//        }
-//    }
     
     /**
      * @return the participantes

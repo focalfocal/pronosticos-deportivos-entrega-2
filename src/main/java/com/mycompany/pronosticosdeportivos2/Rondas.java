@@ -13,13 +13,11 @@ public class Rondas {
     
     //El atributo partidos incluye los partidos jugados de todas las rondas (cada partido incluye el id  y numero de ronda). Ver suposición registrada en PronostiosDeportivos2.java
     private ArrayList<PartidoJugado> partidos;
-    //El atributo idEquiposCreados es un auxiliar para facilitar las búsquedas por id para ver si un equipo con ese id ya existe.
-    //private String[] idEquiposCreados;
+
     //El atributo equipos contiene los equipos creados.
     private ArrayList<Equipo> equipos;
     
     Rondas ( String ruta ){
-        //this.idEquiposCreados = null; //contiene solo el id de cada instancia de objeto creada, para facilitar chequear si un equipo ya existe
         this.equipos = new ArrayList();
         this.partidos = new ArrayList();
         //lee contenido del archivo poblando this.partidos
@@ -89,10 +87,8 @@ public class Rondas {
         //Si el equipo con este id no existe, lo crea
     public void crearEquipoSiNoExiste ( String idEquipo, String nombre, String descripcion ){
 
-        System.out.println("idEquipo: " + idEquipo);
+        //System.out.println("idEquipo: " + idEquipo);
         Optional<Equipo> equipoExistenteOno = this.equipos.stream().filter(p -> p.getId().equals(idEquipo)).findFirst();
-//                .filter(p -> p.getId().equals(idEquipo))
-//                .findFirst();
 
         //crea equipo y lo agrega a lista de equipos
         if ( !equipoExistenteOno.isPresent() ){
@@ -119,30 +115,6 @@ public class Rondas {
         return new PartidoJugado(); //formalidad para cumplir sintaxis de metodo.
     } 
     
-//####PENDIENTE ACTUALIZAR LOS SIGUIENTES METODOS    
-//    public int evaluarPronosticos (Pronosticos pronosticos){
-//        int puntaje = 0;
-//        
-//        for (UnPronostico unPronostico : pronosticos.getPronosticos()){
-//            
-//            //determina cual es el partido jugado correspondiente a este pronostico de un partido
-//            PartidoJugado partidoJugadoCorresp = this.determinarPartJugadoCorrespondiente(unPronostico); 
-//            
-//            //determina puntaje correspondiente a este pronostico
-//            //System.out.println("puntos un partido: " + partidoJugadoCorresp.evalPronUnPartido(unPronostico)); 
-//            
-//            puntaje += partidoJugadoCorresp.evalPronUnPartido(unPronostico);
-//        }
-//        return puntaje;
-//    }
-
-//public PronosticosDeportivos2.ResultadoEnum resultado(Equipo equipo){
-//        if( equipo.getNombre() == this.equipo1.getNombre() ){
-//            return resultadoEquipo1;
-//        } else {
-//            return resultadoEquipo2;
-//        }
-//    }
 
     @Override
     public String toString() {

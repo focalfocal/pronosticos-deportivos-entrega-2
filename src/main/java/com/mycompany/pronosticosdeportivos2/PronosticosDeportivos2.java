@@ -1,7 +1,5 @@
 package com.mycompany.pronosticosdeportivos2;
 
-import java.util.ArrayList;
-
 /**
  * Pronosticos Deportivos - Entrega 2
  * @author dd
@@ -25,23 +23,12 @@ public class PronosticosDeportivos2 {
         //Crea objeto ronda con todos los partidos jugados, leidos de archivo
         Rondas ronda = new Rondas(args[0]);
         
-        //Crea objeto pronosticos con todos los ponosticos, leidos de archivo
-        //Pronosticos pronosticos = new Pronosticos("Mariana", args[1]);
-        
         //Crea objeto Participantes con todos los pronosticos, leidos de archivo
-        //Participantes participantes = new Participantes(args[1]);
         Participantes participantes = new Participantes(args[1], ronda);
         
         participantes.evaluarPronosticosParticipantes();
         
         participantes.imprimirParticipantesYpuntajes();
          
-//###PENDIENTE ACTUALIZAR        
-//        //Determina el puntaje correspondiente a esta ronda y estos pronosticos de una ronda
-//        int puntos = ronda.evaluarPronosticos (pronosticos);
-//        
-//        System.out.println("Participante: " + pronosticos.getParticipante());
-//        System.out.println("Puntos: " + puntos);
-//        // ahora debe incluir tambi[en la cantidad de pronósticos acertados
     }
 }

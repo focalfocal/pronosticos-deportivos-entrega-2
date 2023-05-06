@@ -47,14 +47,16 @@ public class LectorArchivos {
           } //end try
 
           catch ( FileNotFoundException e ) {
-            System.out.println( "Archivo inexistente."
+            System.err.println( "Archivo inexistente."
                               + "\nEl programa se cancela." );
+            System.exit(8);
           }
 
           //todo otro tipo de error
           catch ( Exception e ) {
-            System.out.println( "Error: " + e
+            System.err.println( "Error: " + e
                               + "\nEl programa se cancela." );
+            System.exit(9);
           }
         return renglonesParseados;
         

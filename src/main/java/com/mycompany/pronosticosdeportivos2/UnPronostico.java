@@ -26,9 +26,6 @@ public class UnPronostico {
         } else {
             this.pronosticoEquipo1 = ResultadoEnum.PERDIDO;
         }
-        /*System.out.println(this.idCombinadaRondaEquipos);
-        System.out.println(gana +" | " + empata + " | " + pierde);
-        System.out.println(this.pronosticoEquipo1);*/
     }
 
     /**
@@ -87,6 +84,5 @@ public class UnPronostico {
         this.pronosticoEquipo1 = pronosticoEquipo1;
     }
 
- 
 
 }

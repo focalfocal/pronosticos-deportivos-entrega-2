@@ -1,7 +1,6 @@
 package com.mycompany.pronosticosdeportivos2;
 
 import java.util.ArrayList;
-//import java.util.Collections;  
 import java.util.Comparator; // para sort de ArrayList
 
 /**

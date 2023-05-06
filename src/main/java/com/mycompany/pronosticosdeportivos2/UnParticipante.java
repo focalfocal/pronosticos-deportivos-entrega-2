@@ -1,7 +1,6 @@
 package com.mycompany.pronosticosdeportivos2;
 
 import java.util.ArrayList;
-//import java.util.Arrays;
 
 /**
  *
@@ -39,11 +38,9 @@ public class UnParticipante {
             //determina puntaje correspondiente a este pronostico        
             int[] puntosEtc = partidoJugadoCorresp.evalPronUnPartido(unPronostico);
             
-            //this.puntaje += partidoJugadoCorresp.evalPronUnPartido(unPronostico);
             this.puntaje += puntosEtc[0];
             this.acertados += puntosEtc[1];
         }
-        //return puntaje;
     }
 
     
@@ -53,7 +50,6 @@ public class UnParticipante {
         // ids de ronda + ids de equipos
         String idCombinadaEquiposPronost = unPronostico.getIdCombinadaRondaEquipos();
         
-        //for (PartidoJugado partido : this.ronda.getPartidos() ){
         for (PartidoJugado partido : rondas.getPartidos() ){
  
             if ( partido.getIdCombinadaEquipos().equals( idCombinadaEquiposPronost)) {
@@ -66,17 +62,9 @@ public class UnParticipante {
         return new PartidoJugado(); //formalidad para cumplir sintaxis de metodo.
     } 
 
-//public PronosticosDeportivos2.ResultadoEnum resultado ( Equipo equipo ){
-//        if( equipo.getNombre() == this.equipo1.getNombre() ){
-//            return resultadoEquipo1;
-//        } else {
-//            return resultadoEquipo2;
-//        }
-//    }
     
     public void agregarPuntaje (ArrayList<ArrayList<Object>> participantesYpuntajes) {
-        //participantesYpuntajes.add(new ArrayList<>(Arrays.asList("Alice", 10)));
-        //participantesYpuntajes.add(new ArrayList<>(Arrays.asList("Alice", 10)));
+
         ArrayList<Object> datosParticipante = new ArrayList<>();
         datosParticipante.add(this.nombre);
         datosParticipante.add(this.puntaje);
